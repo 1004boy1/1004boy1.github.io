@@ -18,46 +18,38 @@ a{cursor:pointer;color:inherit;text-decoration:none}.tweak-global-animations-ani
 /*! Squarespace LESS Compiler  (less.js language v1.3.3)  */
 @media only screen and (min-width:640px){#block-yui_3_17_2_1_1767880456460_18126{opacity:0;transition:opacity 1s}#block-yui_3_17_2_1_1767880456460_18126:hover{opacity:1;transition:opacity 1s}}@media only screen and (min-width:640px){#block-7800d271591de55b6e40{opacity:0;transition:opacity 1s}#block-7800d271591de55b6e40:hover{opacity:1;transition:opacity 1s}}@media only screen and (min-width:640px){#block-f0f11da3596abb143be0{opacity:0;transition:opacity 1s}#block-f0f11da3596abb143be0:hover{opacity:1;transition:opacity 1s}}@media only screen and (min-width:640px){#block-df4b1b7be1651cb26c8c{opacity:0;transition:opacity 1s}#block-df4b1b7be1651cb26c8c:hover{opacity:1;transition:opacity 1s}}
 
-/* --- custom pages (about/works/location) --- */
-.page-section { padding: 6vw 0; }
-.content-wrapper { width: min(1100px, 100% - 8vw); margin: 0 auto; }
-
-.page-title { text-align: center; margin: 0 0 3rem; }
-.section-heading { margin: 3rem 0 1rem; }
-
-.studio-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-}
-.studio-item {
-  padding: 28px 18px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
-}
-
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
 }
-.team-card { position: relative; overflow: hidden; border-radius: 8px; }
-.team-card img { width: 100%; display: block; }
+
+@media (max-width: 767px) {
+  .team-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.team-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card img {
+  width: 100%;
+  display: block;
+}
 
 .team-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(120,120,120,0.35); /* transparent grey */
   opacity: 0;
-  transition: opacity 0.8s ease;
   display: grid;
   place-items: center;
   text-align: center;
-  padding: 16px;
+  transition: opacity 0.25s ease;
 }
+
 .team-card:hover .team-overlay { opacity: 1; }
 
-.team-name { font-weight: 600; font-size: 1.05rem; }
-.team-role { margin-top: 0.25rem; opacity: 0.85; }
-
-.simple-list { line-height: 2; padding-left: 1.2rem; }
+.team-name { font-weight: 600; }
+.team-role { margin-top: 6px; opacity: 0.9; }

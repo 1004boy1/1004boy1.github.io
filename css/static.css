@@ -340,3 +340,33 @@ body.lw-about-page .lw-about-hero h1{
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===== ABOUT PAGE: remove Squarespace width ceiling ===== */
+body.lw-about-page .content-wrapper,
+body.lw-about-page .content,
+body.lw-about-page .sqs-layout {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* ===== ABOUT PAGE: make our About content full-width ===== */
+body.lw-about-page .lw-about-wrap{
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 auto !important;
+  padding-left: 4vw !important;
+  padding-right: 4vw !important;
+}
+
+/* ===== STUDIO: make layout + preview much bigger ===== */
+body.lw-about-page .lw-studio{
+  grid-template-columns: 1.6fr 1.2fr !important;
+  gap: 48px !important;
+}
+
+@media (max-width: 900px){
+  body.lw-about-page .lw-studio{
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+}

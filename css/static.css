@@ -371,3 +371,15 @@ body.lw-about-page .lw-about-hero{
 body.lw-about-page .lw-about-hero h1{
   color: #fff !important;
 }
+
+/* Studio preview: force landscape */
+.lw-preview-frame{
+  aspect-ratio: 16 / 9;
+  max-height: none;
+}
+
+.lw-preview-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

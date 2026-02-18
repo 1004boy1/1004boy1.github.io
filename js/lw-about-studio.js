@@ -1,49 +1,13 @@
 (() => {
-
-  /* --------------------------
-     ROOM DATA (THIS is roomMeta)
-  --------------------------- */
-
   const roomMeta = {
-    a: {
-      title: 'A Room',
-      sub: 'Control + Live',
-      imgs: [
-        '/images/studio/rooms/a.jpg',
-        '/images/studio/rooms/a2.jpg'
-      ],
-      idx: 0
-    },
-    b: {
-      title: 'B Room',
-      sub: 'Editing',
-      imgs: ['/images/studio/rooms/b.jpg'],
-      idx: 0
-    },
-    c: {
-      title: 'C Room',
-      sub: '',
-      imgs: ['/images/studio/rooms/c.jpg'],
-      idx: 0
-    },
-    d: {
-      title: 'D Room',
-      sub: '',
-      imgs: ['/images/studio/rooms/d.jpg'],
-      idx: 0
-    },
-    lounge: {
-      title: 'Lounge',
-      sub: '',
-      imgs: ['/images/studio/rooms/lounge.jpg'],
-      idx: 0
-    }
+    a: { title: 'A Room', sub: 'Control + Live', imgs: ['/images/studio/rooms/a.jpg', '/images/studio/rooms/a2.jpg'], idx: 0 },
+    b: { title: 'B Room', sub: 'Editing', imgs: ['/images/studio/rooms/b.jpg'], idx: 0 },
+    c: { title: 'C Room', sub: '', imgs: ['/images/studio/rooms/c.jpg'], idx: 0 },
+    d: { title: 'D Room', sub: '', imgs: ['/images/studio/rooms/d.jpg'], idx: 0 },
+    lounge: { title: 'Lounge', sub: '', imgs: ['/images/studio/rooms/lounge.jpg'], idx: 0 },
   };
 
-  /* --------------------------
-     TAB SYSTEM
-  --------------------------- */
-
+  // Tabs
   const tabs = document.querySelectorAll('.lw-tab');
   const panels = {
     studio: document.getElementById('lw-panel-studio'),
@@ -53,8 +17,12 @@
 
   tabs.forEach(btn => {
     btn.addEventListener('click', () => {
-      tabs.forEach(b => b.classList.remove('is-active'));
+      tabs.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
       btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
 
       const key = btn.dataset.tab;
       Object.entries(panels).forEach(([k, el]) => {
@@ -64,17 +32,14 @@
     });
   });
 
-  /* --------------------------
-     STUDIO PREVIEW SYSTEM
-  --------------------------- */
+  // Preview elements
+  const previewFrame = document.getElementById('lw-preview-frame');
+  const previewImg = document.getElementById('lw-preview-img');
+  const titleEl = document.getElementById('lw-preview-title');
+  const subEl = document.getElementById('lw-preview-sub');
+  const previewToggle = document.getElementById('lw-preview-toggle');
 
-  const previewFrame = document.querySelector('.lw-preview-frame');
-  const previewImg = document.querySelector('.lw-preview-img');
-  const titleEl = document.querySelector('.lw-preview-title');
-  const subEl = document.querySelector('.lw-preview-sub');
-  const previewToggle = document.querySelector('.lw-preview-toggle');
-
-  let currentRoom = 'a';
+  let currentRoom = null;
 
   function showRoom(key) {
     const meta = roomMeta[key];
@@ -90,14 +55,13 @@
     if (subEl) subEl.textContent = meta.sub || '';
 
     if (previewToggle) {
-      previewToggle.style.display =
-        (meta.imgs.length > 1) ? 'inline-block' : 'none';
+      previewToggle.style.display = (meta.imgs.length > 1) ? 'inline-block' : 'none';
     }
 
     previewFrame.classList.add('is-showing');
   }
 
-  // Hover + click on hotspots
+  // Hotspots: hover controls preview, click opens modal
   document.querySelectorAll('.lw-hotspot').forEach(h => {
     const key = h.dataset.room;
 
@@ -108,14 +72,14 @@
       e.preventDefault();
       const meta = roomMeta[key];
       if (!meta) return;
-      const src = meta.imgs[meta.idx] || meta.imgs[0];
-      openModal(src, meta.title, key);
+      openModal(meta.imgs[meta.idx] || meta.imgs[0], meta.title, key);
     });
   });
 
-  // Toggle preview (for A room)
+  // Toggle (preview) for any room with 2+ images (A room)
   if (previewToggle) {
     previewToggle.addEventListener('click', () => {
+      if (!currentRoom) return;
       const meta = roomMeta[currentRoom];
       if (!meta || meta.imgs.length < 2) return;
       meta.idx = (meta.idx + 1) % meta.imgs.length;
@@ -123,25 +87,23 @@
     });
   }
 
-  /* --------------------------
-     MODAL SYSTEM
-  --------------------------- */
-
+  // Modal
   const modal = document.getElementById('lw-modal');
   const modalImg = document.getElementById('lw-modal-img');
   const modalToggle = document.getElementById('lw-modal-toggle');
 
   function openModal(src, alt, roomKey) {
     if (!modal || !modalImg) return;
+
     modalImg.src = src;
     modalImg.alt = alt || '';
+
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
 
     if (modalToggle) {
       const meta = roomMeta[roomKey];
-      modalToggle.style.display =
-        (meta && meta.imgs.length > 1) ? 'inline-block' : 'none';
+      modalToggle.style.display = (meta && meta.imgs.length > 1) ? 'inline-block' : 'none';
     }
   }
 
@@ -153,9 +115,7 @@
 
   if (modal) {
     modal.addEventListener('click', (e) => {
-      const close = e.target &&
-                    e.target.getAttribute &&
-                    e.target.getAttribute('data-close');
+      const close = e.target && e.target.getAttribute && e.target.getAttribute('data-close');
       if (close) closeModal();
     });
 
@@ -164,13 +124,13 @@
     });
   }
 
+  // Toggle (modal) for A room
   if (modalToggle) {
     modalToggle.addEventListener('click', () => {
       const meta = roomMeta['a'];
       if (!meta || meta.imgs.length < 2) return;
       meta.idx = (meta.idx + 1) % meta.imgs.length;
-      modalImg.src = meta.imgs[meta.idx];
+      if (modalImg) modalImg.src = meta.imgs[meta.idx];
     });
   }
-
 })();

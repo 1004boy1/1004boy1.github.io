@@ -75,8 +75,11 @@
    Keep this block at the VERY BOTTOM of static.css
    ========================= */
 
+/* Make About section full-width */
 .lw-about-wrap{
-  width: min(1300px, calc(100% - 6vw));
+  width: 100%;
+  max-width: none;
+  padding: 0 6vw;
   margin: 0 auto;
 }
 
@@ -123,10 +126,10 @@
 
 /* Studio layout + preview */
 .lw-studio{
-  display:grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 28px;
-  align-items:start;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
 @media (max-width: 900px){

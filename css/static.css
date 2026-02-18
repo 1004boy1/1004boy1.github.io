@@ -312,3 +312,62 @@
     transform: translateY(0);
   }
 }
+
+
+/* About page: make the whole top header area black for readability */
+body.lw-about-page header,
+body.lw-about-page .header,
+body.lw-about-page #header,
+body.lw-about-page .Header,
+body.lw-about-page .sqs-header {
+  background: #000 !important;
+}
+
+/* If the header is transparent and overlays content, this ensures contrast */
+body.lw-about-page .header,
+body.lw-about-page #header,
+body.lw-about-page .sqs-header {
+  background-color: #000 !important;
+}
+
+/* Force preview to be landscape */
+.lw-preview-frame {
+  aspect-ratio: 16 / 9;
+  max-height: none;          /* remove the tall constraint */
+}
+
+.lw-preview-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+/* Fallback: landscape using fixed height */
+@supports not (aspect-ratio: 16 / 9) {
+  .lw-preview-frame { height: 360px; }
+}
+
+/* About page: force header + hero to be black like homepage */
+body.lw-about-page #header{
+  background: #000 !important;
+}
+
+/* Some exports use inner wrappers for the header background */
+body.lw-about-page #header .header-background,
+body.lw-about-page #header .Header-background,
+body.lw-about-page #header .header-inner{
+  background: #000 !important;
+}
+
+/* Ensure the hero itself is black and starts under the header */
+body.lw-about-page .lw-about-hero{
+  background: #000;
+  padding-top: 90px; /* makes space for the fixed header; adjust if needed */
+  margin-top: -1px;  /* removes thin gap line */
+}
+
+/* Make About title white and readable */
+body.lw-about-page .lw-about-hero h1{
+  color: #fff !important;
+}

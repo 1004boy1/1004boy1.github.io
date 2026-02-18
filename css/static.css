@@ -76,7 +76,7 @@
    ========================= */
 
 .lw-about-wrap{
-  width: min(1100px, calc(100% - 8vw));
+  width: min(1300px, calc(100% - 6vw));
   margin: 0 auto;
 }
 
@@ -124,8 +124,8 @@
 /* Studio layout + preview */
 .lw-studio{
   display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 22px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 28px;
   align-items:start;
 }
 
@@ -173,29 +173,9 @@
 /* Preview box sizing */
 
 
-.lw-preview-overlay{
-  position:absolute;
-  inset:0;
-  background: rgba(120,120,120,.22);
-  opacity:0;
-  transition: opacity .25s ease;
-}
 
 
-.lw-preview-label{
-  position:absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 12px;
-  padding: 12px 14px;
-  backdrop-filter: blur(6px);
-}
 
-.lw-preview-title{ font-weight: 700; }
-.lw-preview-sub{ opacity: .85; margin-top: 2px; }
 
 .lw-preview-toggle{
   margin-top: 10px;

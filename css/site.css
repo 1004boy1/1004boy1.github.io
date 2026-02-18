@@ -53,3 +53,37 @@ a{cursor:pointer;color:inherit;text-decoration:none}.tweak-global-animations-ani
 
 .team-name { font-weight: 600; }
 .team-role { margin-top: 6px; opacity: 0.9; }
+
+
+
+
+
+
+
+
+
+
+/* About page content centering */
+.about-center{
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.about-center h1,
+.about-center h2{
+  text-align: center;
+}
+
+.about-center ul{
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+  display: inline-block; /* makes list feel centered */
+  text-align: left;      /* keeps bullet-like alignment */
+}
+
+.about-center li{
+  margin: 6px 0;
+}

@@ -359,6 +359,6 @@ body.lw-about-page .lw-studio{
 
 /* Make Studio section feel much larger */
 .lw-studio{
-  transform: scale(1.2);
+  transform: scale(2);
   transform-origin: top center;
 }

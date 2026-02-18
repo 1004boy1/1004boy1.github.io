@@ -319,7 +319,7 @@ body.lw-about-page .lw-about-hero h1{
 .lw-preview-frame{
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(255,255,255,.04);

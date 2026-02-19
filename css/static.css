@@ -403,6 +403,12 @@ body.lw-about-page .lw-about-hero{
   padding-bottom: 46px;
 }
 
+body.lw-about-page .lw-about-hero{
+  margin-top: -2px;
+}
+
+
+
 body.lw-about-page .lw-about-hero-inner{
   width: min(1600px, calc(100% - 6vw));
   margin: 0 auto;

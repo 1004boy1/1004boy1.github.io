@@ -456,3 +456,25 @@ body.lw-about-page .lw-about-hero{
 
 body.lw-about-page #header{ background:#000 !important; }
 body.lw-about-page .lw-about-hero{ background:#000 !important; }
+
+/* ===== ABOUT PAGE: make header announcement band black + continuous ===== */
+body.lw-about-page .header-announcement-bar-wrapper{
+  background: #000 !important;
+}
+
+/* Sometimes the inner bar has its own background */
+body.lw-about-page .header-announcement-bar{
+  background: #000 !important;
+}
+
+/* Remove any bottom margin/padding that creates a visible break */
+body.lw-about-page .header-announcement-bar-wrapper,
+body.lw-about-page .header-announcement-bar{
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Make hero start immediately after the announcement/header area */
+body.lw-about-page .lw-about-hero{
+  margin-top: 0 !important;
+}

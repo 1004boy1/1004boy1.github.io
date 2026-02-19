@@ -399,7 +399,7 @@ body.lw-about-page .lw-about-hero{
   padding: 0;
 
   /* makes it connect with the header visually */
-  padding-top: 88px;   /* adjust if header height differs */
+  padding-top: 100px;   /* adjust if header height differs */
   padding-bottom: 46px;
 }
 

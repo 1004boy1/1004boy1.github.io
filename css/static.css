@@ -496,3 +496,11 @@ body.lw-about-page .sqs-header {
 body.lw-about-page #header * {
   border-bottom-color: transparent !important;
 }
+
+/* About page: remove the 1px divider drawn by the skip link pseudo-element */
+body.lw-about-page a.header-skip-link::before{
+  border-bottom: 0 !important;
+  border-bottom-width: 0 !important;
+  border-bottom-style: none !important;
+  content: none !important;
+}

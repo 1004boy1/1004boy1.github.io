@@ -376,3 +376,16 @@ body.lw-about-page .sqs-layout{
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+/* ===== ABOUT PAGE: hard-center the grid column ===== */
+body.lw-about-page .sqs-layout .row,
+body.lw-about-page .sqs-layout .sqs-row {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.lw-about-page .sqs-layout [class*="sqs-col"]{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  float: none !important;   /* prevent leftover float offsets */
+}

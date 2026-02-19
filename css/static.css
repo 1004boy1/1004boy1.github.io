@@ -344,21 +344,18 @@ body.lw-about-page .lw-about-hero h1{
 }
 
 
-/* ===== STUDIO: rebalance layout vs photo ===== */
+/* ===== STUDIO: make layout + preview much bigger ===== */
 body.lw-about-page .lw-studio{
-  display: grid;
-  grid-template-columns: 1.3fr 1.4fr; /* left (layout) / right (photo) */
-  gap: 60px;
-  align-items: center;
+  grid-template-columns: 1.6fr 1.2fr !important;
+  gap: 48px !important;
 }
 
 @media (max-width: 900px){
   body.lw-about-page .lw-studio{
-    grid-template-columns: 1fr;
-    gap: 22px;
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
   }
 }
-
 
 
 /* ===== ABOUT PAGE: hard-center the grid column ===== */
@@ -389,15 +386,6 @@ body.lw-about-page .lw-about-wrap{
   box-sizing: border-box !important;
 }
 
-/* Make floorplan visually lighter and centered */
-body.lw-about-page .lw-floorplan{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-body.lw-about-page .lw-floorplan-img{
-  width: 82%;      /* was 100% */
-  max-width: 820px;
-  height: auto;
-}
+
+body.lw-about-page .lw-about-wrap{ outline: 4px solid red; }

@@ -357,26 +357,6 @@ body.lw-about-page .lw-studio{
   }
 }
 
-/* ===== ABOUT PAGE: remove layout width limit safely ===== */
-
-body.lw-about-page .content-wrapper {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 4vw !important;
-    padding-right: 4vw !important;
-    box-sizing: border-box !important;
-}
-
-body.lw-about-page .content{
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-body.lw-about-page .sqs-layout{
-  max-width: 1600px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
 
 /* ===== ABOUT PAGE: hard-center the grid column ===== */
 body.lw-about-page .sqs-layout .row,
@@ -390,3 +370,22 @@ body.lw-about-page .sqs-layout [class*="sqs-col"]{
   margin-right: auto !important;
   float: none !important;   /* prevent leftover float offsets */
 }
+
+
+/* ===== ABOUT PAGE: hard-center our content regardless of Squarespace offsets ===== */
+body.lw-about-page .lw-about-wrap{
+  position: relative !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+
+  width: min(2200px, calc(100vw - 4vw)) !important;
+  max-width: none !important;
+
+  margin: 0 !important;        /* margin is irrelevant with left/transform */
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+
+
+body.lw-about-page .lw-about-wrap{ outline: 4px solid red; }

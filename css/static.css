@@ -403,9 +403,6 @@ body.lw-about-page .lw-about-hero{
   padding-bottom: 46px;
 }
 
-body.lw-about-page .lw-about-hero{
-  margin-top: -2px;
-}
 
 
 
@@ -437,15 +434,6 @@ body.lw-about-page .sqs-header .header-background {
   opacity: 1 !important;
 }
 
-/* ===== ABOUT PAGE: remove spacer/gap between header and hero ===== */
-body.lw-about-page #page,
-body.lw-about-page main#page {
-  padding-top: 0 !important;
-}
-
-body.lw-about-page .lw-about-hero{
-  margin-top: 0 !important;
-}
 
 /* ===== ABOUT PAGE: hero sits directly under header ===== */
 body.lw-about-page .lw-about-hero{
@@ -474,16 +462,6 @@ body.lw-about-page .header-announcement-bar{
   padding-bottom: 0 !important;
 }
 
-/* Make hero start immediately after the announcement/header area */
-body.lw-about-page .lw-about-hero{
-  margin-top: 0 !important;
-}
-
-/* Kill 1px seams */
-body.lw-about-page .lw-about-hero{
-  position: relative;
-  top: -1px;
-}
 
 /* About page: remove the white divider under the header */
 body.lw-about-page #header,
@@ -510,4 +488,13 @@ body.lw-about-page a.header-skip-link::after{
   border-bottom-width: 0 !important;
   border-bottom-style: none !important;
   content: none !important;
+}
+
+/* About page: eliminate 1px seam between header area and hero */
+body.lw-about-page .lw-about-hero{
+  position: relative;
+  margin-top: -1px !important;
+}
+body.lw-about-page .lw-about-hero{
+  background: #000 !important;
 }

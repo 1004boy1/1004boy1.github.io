@@ -399,7 +399,7 @@ body.lw-about-page .lw-about-hero{
   padding: 0;
 
   /* makes it connect with the header visually */
-  padding-top: 100px;   /* adjust if header height differs */
+  padding-top: 88px;   /* adjust if header height differs */
   padding-bottom: 46px;
 }
 
@@ -420,4 +420,36 @@ body.lw-about-page .lw-about-hero h1{
   margin: 0;
   text-transform: uppercase;
   letter-spacing: .06em;
+}
+
+/* ===== ABOUT PAGE: force header band black ===== */
+body.lw-about-page #header,
+body.lw-about-page .header,
+body.lw-about-page .sqs-header {
+  background: #000 !important;
+}
+
+/* Squarespace often draws header background on an inner element */
+body.lw-about-page #header .header-background,
+body.lw-about-page #header .Header-background,
+body.lw-about-page .sqs-header .header-background {
+  background: #000 !important;
+  opacity: 1 !important;
+}
+
+/* ===== ABOUT PAGE: remove spacer/gap between header and hero ===== */
+body.lw-about-page #page,
+body.lw-about-page main#page {
+  padding-top: 0 !important;
+}
+
+body.lw-about-page .lw-about-hero{
+  margin-top: 0 !important;
+}
+
+/* ===== ABOUT PAGE: hero sits directly under header ===== */
+body.lw-about-page .lw-about-hero{
+  background: #000 !important;
+  padding-top: 40px !important;   /* space for the word ABOUT inside band */
+  padding-bottom: 46px !important;
 }

@@ -478,3 +478,9 @@ body.lw-about-page .header-announcement-bar{
 body.lw-about-page .lw-about-hero{
   margin-top: 0 !important;
 }
+
+/* Kill 1px seams */
+body.lw-about-page .lw-about-hero{
+  position: relative;
+  top: -1px;
+}

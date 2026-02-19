@@ -359,11 +359,12 @@ body.lw-about-page .lw-studio{
 
 /* ===== ABOUT PAGE: remove layout width limit safely ===== */
 
-body.lw-about-page .content-wrapper{
-  width: 100% !important;
-  max-width: 100% !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+body.lw-about-page .content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 4vw !important;
+    padding-right: 4vw !important;
+    box-sizing: border-box !important;
 }
 
 body.lw-about-page .content{

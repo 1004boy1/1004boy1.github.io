@@ -450,14 +450,6 @@ body.lw-about-page .header-announcement-bar-wrapper{
   background: #000 !important;
 }
 
-/* About hero: kill ANY line/shadow/gradient on content-wrapper layer */
-body.lw-about-page section[data-section-id="about-section-1"] .content-wrapper{
-  background: #000 !important;
-  background-image: none !important;
-  box-shadow: none !important;
-  border: 0 !important;
-  outline: 0 !important;
-}
 
 /* If the line is coming from pseudo-elements (common) */
 body.lw-about-page section[data-section-id="about-section-1"] .content-wrapper::before,
@@ -473,4 +465,37 @@ body.lw-about-page section[data-section-id="about-section-1"] .content-wrapper::
 body.lw-about-page section[data-section-id="about-section-1"]{
   overflow: hidden !important;
   background: #000 !important;
+}
+
+/* ===== ABOUT HERO + GREY SECTION (clean version) ===== */
+
+/* Hero stays black */
+body.lw-about-page .lw-about-hero{
+  background: #000 !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Grey section below */
+body.lw-about-page section[data-section-id="about-section-1"]{
+  background: rgb(217, 217, 217) !important;
+  overflow: hidden !important;
+}
+
+/* Remove any background from inner wrappers */
+body.lw-about-page section[data-section-id="about-section-1"] .section-background,
+body.lw-about-page section[data-section-id="about-section-1"] .content-wrapper{
+  background: transparent !important;
+  background-image: none !important;
+}
+
+/* Seam fix (prevents white line) */
+body.lw-about-page .lw-about-hero::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 2px;
+  background: #000;
 }

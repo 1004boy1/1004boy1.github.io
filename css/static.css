@@ -70,21 +70,55 @@
 .about-center li{
   margin: 6px 0;
 }
+
 /* =========================
-   Lockwood About: Tabs + Studio Map
+   Lockwood About: Tabs + Studio Map  (CLEAN)
    Keep this block at the VERY BOTTOM of static.css
    ========================= */
 
-/* Make About section full-width */
-.lw-about-wrap{
-  width: 100%;
-  max-width: none;
-  padding: 0 6vw;
-  margin: 0 auto;
+/* ---------- ABOUT: header + hero black band ---------- */
+/* Make the header readable (About page only) */
+body.lw-about-page #header,
+body.lw-about-page .header,
+body.lw-about-page .sqs-header,
+body.lw-about-page #header .header-background,
+body.lw-about-page #header .header-inner{
+  background: #000 !important;
 }
 
-/* Tabs: subtitle style + underline active */
-.lw-tabs{
+/* Remove the annoying 1px divider(s) on About page */
+body.lw-about-page .header-border{
+  display: none !important;
+}
+body.lw-about-page a.header-skip-link::before{
+  content: none !important;
+  border: 0 !important;
+  display: none !important;
+}
+
+/* Full-width horizontal hero band */
+body.lw-about-page .lw-about-hero{
+  width: 100%;
+  background: #000;
+  margin: 0;
+  /* space for fixed header + nice band height */
+  padding: 110px 0 56px;
+}
+body.lw-about-page .lw-about-hero h1{
+  color: #fff !important;
+}
+
+/* ---------- ABOUT: main wrap (NO translate hacks) ---------- */
+body.lw-about-page .lw-about-wrap{
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 6vw;
+  box-sizing: border-box;
+}
+
+/* ---------- Tabs ---------- */
+body.lw-about-page .lw-tabs{
   display:flex;
   gap:18px;
   justify-content:center;
@@ -93,7 +127,7 @@
   flex-wrap: wrap;
 }
 
-.lw-tab{
+body.lw-about-page .lw-tab{
   appearance:none;
   background: transparent;
   border: none;
@@ -105,12 +139,9 @@
   opacity: .8;
   position: relative;
 }
-
-.lw-tab:hover{ opacity: 1; }
-
-.lw-tab.is-active{ opacity: 1; }
-
-.lw-tab.is-active::after{
+body.lw-about-page .lw-tab:hover{ opacity: 1; }
+body.lw-about-page .lw-tab.is-active{ opacity: 1; }
+body.lw-about-page .lw-tab.is-active::after{
   content:"";
   position:absolute;
   left:0;
@@ -121,47 +152,46 @@
   opacity:.85;
 }
 
-.lw-panel{ display:none; }
-.lw-panel.is-active{ display:block; }
+body.lw-about-page .lw-panel{ display:none; }
+body.lw-about-page .lw-panel.is-active{ display:block; }
 
-/* Studio layout + preview */
-.lw-studio{
+/* ---------- Studio layout + preview ---------- */
+body.lw-about-page .lw-studio{
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 36px;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 44px;
   align-items: center;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin: 40px 0;
 }
 
 @media (max-width: 900px){
-  .lw-studio{ grid-template-columns: 1fr; }
+  body.lw-about-page .lw-studio{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
 }
 
-.lw-floorplan{
+body.lw-about-page .lw-floorplan{
   position:relative;
   border-radius: 12px;
   overflow:hidden;
   background: rgba(255,255,255,.04);
 }
-
-.lw-floorplan-img{
+body.lw-about-page .lw-floorplan-img{
   width:100%;
   height:auto;
   display:block;
 }
 
-/* Invisible hotspots */
-.lw-hotspot{
+/* Invisible hotspots (hover fill still works) */
+body.lw-about-page .lw-hotspot{
   position:absolute;
   border:none;
   background: transparent;
   padding:0;
   cursor:pointer;
 }
-
-/* upward grey fill */
-.lw-hotspot::before{
+body.lw-about-page .lw-hotspot::before{
   content:"";
   position:absolute;
   inset:0;
@@ -170,164 +200,21 @@
   transform-origin: bottom;
   transition: transform .22s ease;
 }
-
-.lw-hotspot:hover::before{
+body.lw-about-page .lw-hotspot:hover::before{
   transform: scaleY(1);
 }
 
-/* Preview box sizing */
-
-
-
-
-
-
-.lw-preview-toggle{
-  margin-top: 10px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.25);
-  background: rgba(255,255,255,.08);
-  cursor:pointer;
-  display:none; /* JS enables only when 2+ images */
-}
-
-/* Modal (prevents duplicate image down the page) */
-.lw-modal{
-  position: fixed;
-  inset: 0;
-  display:none;
-  z-index: 9999;
-}
-
-.lw-modal.is-open{ display:block; }
-
-.lw-modal-backdrop{
-  position:absolute;
-  inset:0;
-  background: rgba(0,0,0,.65);
-}
-
-.lw-modal-card{
-  position: relative;
-  width: min(1100px, calc(100% - 10vw));
-  margin: 6vh auto 0;
-  border-radius: 16px;
-  overflow:hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,.5);
-}
-
-.lw-modal-img{
-  width:100%;
-  height:auto;
-  display:block;
-}
-
-.lw-modal-toggle{
-  position:absolute;
-  right:14px;
-  bottom:14px;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.25);
-  background: rgba(0,0,0,.35);
-  color: white;
-  cursor:pointer;
-  display:none; /* JS enables only when 2+ images */
-}
-
-/* About Hero Band */
-
-.lw-about-hero{
-  background: #000;
-  min-height: 28vh;   /* roughly half of homepage */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.lw-about-hero-inner{
-  width: min(1100px, calc(100% - 8vw));
-  margin: 0 auto;
-}
-
-.lw-about-hero h1{
-  color: #fff;
-  font-size: clamp(28px, 5vw, 56px);
-  letter-spacing: .05em;
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.lw-about-hero h1{
-  opacity: 0;
-  transform: translateY(12px);
-  animation: lwFadeUp .6s ease forwards;
-}
-
-@keyframes lwFadeUp{
-  to{
-    opacity:1;
-    transform: translateY(0);
-  }
-}
-
-
-/* About page: make the whole top header area black for readability */
-body.lw-about-page header,
-body.lw-about-page .header,
-body.lw-about-page #header,
-body.lw-about-page .Header,
-body.lw-about-page .sqs-header {
-  background: #000 !important;
-}
-
-/* If the header is transparent and overlays content, this ensures contrast */
-body.lw-about-page .header,
-body.lw-about-page #header,
-body.lw-about-page .sqs-header {
-  background-color: #000 !important;
-}
-
-
-
-/* About page: force header + hero to be black like homepage */
-body.lw-about-page #header{
-  background: #000 !important;
-}
-
-/* Some exports use inner wrappers for the header background */
-body.lw-about-page #header .header-background,
-body.lw-about-page #header .Header-background,
-body.lw-about-page #header .header-inner{
-  background: #000 !important;
-}
-
-/* Ensure the hero itself is black and starts under the header */
-body.lw-about-page .lw-about-hero{
-  background: #000;
-  padding-top: 90px; /* makes space for the fixed header; adjust if needed */
-  margin-top: -1px;  /* removes thin gap line */
-}
-
-/* Make About title white and readable */
-body.lw-about-page .lw-about-hero h1{
-  color: #fff !important;
-}
-
-/* --- Studio Preview: force landscape --- */
-
-.lw-preview-frame{
+/* Preview: force LANDSCAPE and stable sizing */
+body.lw-about-page .lw-preview-frame{
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 16 / 9;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(255,255,255,.04);
 }
 
-.lw-preview-img{
+body.lw-about-page .lw-preview-img{
   position: absolute;
   inset: 0;
   width: 100%;
@@ -337,177 +224,42 @@ body.lw-about-page .lw-about-hero h1{
   transform: translateY(10px);
   transition: opacity .25s ease, transform .25s ease;
 }
-
-.lw-preview-frame.is-showing .lw-preview-img{
+body.lw-about-page .lw-preview-frame.is-showing .lw-preview-img{
   opacity: 1;
   transform: translateY(0);
 }
 
-
-/* ===== STUDIO: make layout + preview much bigger ===== */
-body.lw-about-page .lw-studio{
-  grid-template-columns: 1.6fr 1.2fr !important;
-  gap: 48px !important;
+/* Hide room label overlay if you don’t want it */
+body.lw-about-page .lw-preview-label{
+  display:none !important;
 }
 
-@media (max-width: 900px){
-  body.lw-about-page .lw-studio{
-    grid-template-columns: 1fr !important;
-    gap: 22px !important;
-  }
+/* ---------- Modal ---------- */
+body.lw-about-page .lw-modal{
+  position: fixed;
+  inset: 0;
+  display:none;
+  z-index: 9999;
+}
+body.lw-about-page .lw-modal.is-open{ display:block; }
+
+body.lw-about-page .lw-modal-backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.65);
 }
 
-
-/* ===== ABOUT PAGE: hard-center the grid column ===== */
-body.lw-about-page .sqs-layout .row,
-body.lw-about-page .sqs-layout .sqs-row {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-body.lw-about-page .sqs-layout [class*="sqs-col"]{
-  margin-left: auto !important;
-  margin-right: auto !important;
-  float: none !important;   /* prevent leftover float offsets */
-}
-
-
-/* ===== ABOUT PAGE: hard-center our content regardless of Squarespace offsets ===== */
-body.lw-about-page .lw-about-wrap{
-  position: relative !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-
-  width: min(2200px, calc(100vw - 4vw)) !important;
-  max-width: none !important;
-
-  margin: 0 !important;        /* margin is irrelevant with left/transform */
-  padding: 0 !important;
-  box-sizing: border-box !important;
-}
-
-/* ===== ABOUT HERO: full-width band, continuous with header ===== */
-
-body.lw-about-page .lw-about-hero{
-  width: 100vw;
+body.lw-about-page .lw-modal-card{
   position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-
-  background: #000;
-  margin: 0;
-  padding: 0;
-
-  /* makes it connect with the header visually */
-  padding-top: 88px;   /* adjust if header height differs */
-  padding-bottom: 46px;
+  width: min(1100px, calc(100% - 10vw));
+  margin: 6vh auto 0;
+  border-radius: 16px;
+  overflow:hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
 }
 
-body.lw-about-page .lw-about-hero{
-  margin-top: -2px;
-}
-
-
-
-body.lw-about-page .lw-about-hero-inner{
-  width: min(1600px, calc(100% - 6vw));
-  margin: 0 auto;
-  text-align: center;
-}
-
-body.lw-about-page .lw-about-hero h1{
-  color: #fff;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-}
-
-/* ===== ABOUT PAGE: force header band black ===== */
-body.lw-about-page #header,
-body.lw-about-page .header,
-body.lw-about-page .sqs-header {
-  background: #000 !important;
-}
-
-/* Squarespace often draws header background on an inner element */
-body.lw-about-page #header .header-background,
-body.lw-about-page #header .Header-background,
-body.lw-about-page .sqs-header .header-background {
-  background: #000 !important;
-  opacity: 1 !important;
-}
-
-/* ===== ABOUT PAGE: remove spacer/gap between header and hero ===== */
-body.lw-about-page #page,
-body.lw-about-page main#page {
-  padding-top: 0 !important;
-}
-
-body.lw-about-page .lw-about-hero{
-  margin-top: 0 !important;
-}
-
-/* ===== ABOUT PAGE: hero sits directly under header ===== */
-body.lw-about-page .lw-about-hero{
-  background: #000 !important;
-  padding-top: 40px !important;   /* space for the word ABOUT inside band */
-  padding-bottom: 46px !important;
-}
-
-body.lw-about-page #header{ background:#000 !important; }
-body.lw-about-page .lw-about-hero{ background:#000 !important; }
-
-/* ===== ABOUT PAGE: make header announcement band black + continuous ===== */
-body.lw-about-page .header-announcement-bar-wrapper{
-  background: #000 !important;
-}
-
-/* Sometimes the inner bar has its own background */
-body.lw-about-page .header-announcement-bar{
-  background: #000 !important;
-}
-
-/* Remove any bottom margin/padding that creates a visible break */
-body.lw-about-page .header-announcement-bar-wrapper,
-body.lw-about-page .header-announcement-bar{
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* Make hero start immediately after the announcement/header area */
-body.lw-about-page .lw-about-hero{
-  margin-top: 0 !important;
-}
-
-/* Kill 1px seams */
-body.lw-about-page .lw-about-hero{
-  position: relative;
-  top: -1px;
-}
-
-/* About page: remove the white divider under the header */
-body.lw-about-page #header,
-body.lw-about-page .header,
-body.lw-about-page .sqs-header {
-  border-bottom: none !important;
-  box-shadow: none !important;
-}
-
-body.lw-about-page #header * {
-  border-bottom-color: transparent !important;
-}
-
-/* About page: remove the 1px divider drawn by the skip link pseudo-element */
-body.lw-about-page a.header-skip-link::before{
-  border-bottom: 0 !important;
-  border-bottom-width: 0 !important;
-  border-bottom-style: none !important;
-  content: none !important;
-}
-
-body.lw-about-page a.header-skip-link::after{
-  border-bottom: 0 !important;
-  border-bottom-width: 0 !important;
-  border-bottom-style: none !important;
-  content: none !important;
+body.lw-about-page .lw-modal-img{
+  width:100%;
+  height:auto;
+  display:block;
 }

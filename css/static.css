@@ -386,6 +386,32 @@ body.lw-about-page .lw-about-wrap{
   box-sizing: border-box !important;
 }
 
+/* ===== ABOUT HERO: full-width band, continuous with header ===== */
 
+body.lw-about-page .lw-about-hero{
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 
-body.lw-about-page .lw-about-wrap{ outline: 4px solid red; }
+  background: #000;
+  margin: 0;
+  padding: 0;
+
+  /* makes it connect with the header visually */
+  padding-top: 88px;   /* adjust if header height differs */
+  padding-bottom: 46px;
+}
+
+body.lw-about-page .lw-about-hero-inner{
+  width: min(1600px, calc(100% - 6vw));
+  margin: 0 auto;
+  text-align: center;
+}
+
+body.lw-about-page .lw-about-hero h1{
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}

@@ -504,3 +504,10 @@ body.lw-about-page a.header-skip-link::before{
   border-bottom-style: none !important;
   content: none !important;
 }
+
+body.lw-about-page a.header-skip-link::after{
+  border-bottom: 0 !important;
+  border-bottom-width: 0 !important;
+  border-bottom-style: none !important;
+  content: none !important;
+}

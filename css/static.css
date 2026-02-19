@@ -484,3 +484,15 @@ body.lw-about-page .lw-about-hero{
   position: relative;
   top: -1px;
 }
+
+/* About page: remove the white divider under the header */
+body.lw-about-page #header,
+body.lw-about-page .header,
+body.lw-about-page .sqs-header {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+body.lw-about-page #header * {
+  border-bottom-color: transparent !important;
+}

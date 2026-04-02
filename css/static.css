@@ -34,8 +34,23 @@
 
 .team-card:hover .team-overlay { opacity: 1; }
 
-.team-name { font-weight: 600; }
-.team-role { margin-top: 6px; opacity: 0.9; }
+.team-name {
+  font-weight: 600;
+  color: #000;
+  text-shadow:
+    0 0 4px rgba(255,255,255,0.95),
+    0 0 8px rgba(255,255,255,0.9),
+    0 0 14px rgba(255,255,255,0.75);
+}
+.team-role {
+  margin-top: 6px;
+  opacity: 0.9;
+  color: #000;
+  text-shadow:
+    0 0 4px rgba(255,255,255,0.95),
+    0 0 8px rgba(255,255,255,0.9),
+    0 0 14px rgba(255,255,255,0.75);
+}
 
 
 

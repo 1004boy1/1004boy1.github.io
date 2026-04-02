@@ -1,10 +1,41 @@
 (() => {
   const roomMeta = {
-    a: { title: 'A Room', sub: 'Control + Live', imgs: ['/images/studio/rooms/a.jpg', '/images/studio/rooms/a2.jpg'], idx: 0 },
-    b: { title: 'B Room', sub: 'Editing', imgs: ['/images/studio/rooms/b.jpg'], idx: 0 },
-    c: { title: 'C Room', sub: '', imgs: ['/images/studio/rooms/c.jpg'], idx: 0 },
-    d: { title: 'D Room', sub: '', imgs: ['/images/studio/rooms/d.jpg'], idx: 0 },
-    lounge: { title: 'Lounge', sub: '', imgs: ['/images/studio/rooms/lounge.jpg'], idx: 0 },
+    a: {
+      title: 'A Room',
+      sub: 'Control',
+      imgs: ['/images/studio/rooms/a.jpg'],
+      idx: 0
+    },
+    a2: {
+      title: 'A Room',
+      sub: 'Live',
+      imgs: ['/images/studio/rooms/a2.jpg'],
+      idx: 0
+    },
+    b: {
+      title: 'B Room',
+      sub: 'Editing',
+      imgs: ['/images/studio/rooms/b.jpg'],
+      idx: 0
+    },
+    c: {
+      title: 'C Room',
+      sub: '',
+      imgs: ['/images/studio/rooms/c.jpg'],
+      idx: 0
+    },
+    d: {
+      title: 'D Room',
+      sub: '',
+      imgs: ['/images/studio/rooms/d.jpg'],
+      idx: 0
+    },
+    lounge: {
+      title: 'Lounge',
+      sub: '',
+      imgs: ['/images/studio/rooms/lounge.jpg'],
+      idx: 0
+    },
   };
 
   // Tabs
@@ -49,7 +80,7 @@
     const src = meta.imgs[meta.idx] || meta.imgs[0];
 
     previewImg.src = src;
-    previewImg.alt = meta.title;
+    previewImg.alt = meta.sub ? `${meta.title} (${meta.sub})` : meta.title;
 
     if (titleEl) titleEl.textContent = meta.title;
     if (subEl) subEl.textContent = meta.sub || '';
@@ -76,7 +107,7 @@
     });
   });
 
-  // Toggle (preview) for any room with 2+ images (A room)
+  // Toggle (preview) for rooms with 2+ images
   if (previewToggle) {
     previewToggle.addEventListener('click', () => {
       if (!currentRoom) return;
@@ -92,9 +123,12 @@
   const modalImg = document.getElementById('lw-modal-img');
   const modalToggle = document.getElementById('lw-modal-toggle');
 
+  let currentModalRoom = null;
+
   function openModal(src, alt, roomKey) {
     if (!modal || !modalImg) return;
 
+    currentModalRoom = roomKey;
     modalImg.src = src;
     modalImg.alt = alt || '';
 
@@ -111,6 +145,7 @@
     if (!modal) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
+    currentModalRoom = null;
   }
 
   if (modal) {
@@ -124,10 +159,11 @@
     });
   }
 
-  // Toggle (modal) for A room
+  // Toggle (modal) for current room if it has multiple images
   if (modalToggle) {
     modalToggle.addEventListener('click', () => {
-      const meta = roomMeta['a'];
+      if (!currentModalRoom) return;
+      const meta = roomMeta[currentModalRoom];
       if (!meta || meta.imgs.length < 2) return;
       meta.idx = (meta.idx + 1) % meta.imgs.length;
       if (modalImg) modalImg.src = meta.imgs[meta.idx];

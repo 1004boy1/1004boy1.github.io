@@ -3,39 +3,33 @@
     a: {
       title: 'A Room',
       sub: 'Control',
-      imgs: ['/images/studio/rooms/a.jpg'],
-      idx: 0
+      img: '/images/studio/rooms/a.jpg'
     },
     a2: {
       title: 'A Room',
       sub: 'Live',
-      imgs: ['/images/studio/rooms/a2.jpg'],
-      idx: 0
+      img: '/images/studio/rooms/a2.jpg'
     },
     b: {
       title: 'B Room',
       sub: 'Editing',
-      imgs: ['/images/studio/rooms/b.jpg'],
-      idx: 0
+      img: '/images/studio/rooms/b.jpg'
     },
     c: {
       title: 'C Room',
       sub: '',
-      imgs: ['/images/studio/rooms/c.jpg'],
-      idx: 0
+      img: '/images/studio/rooms/c.jpg'
     },
     d: {
       title: 'D Room',
       sub: '',
-      imgs: ['/images/studio/rooms/d.jpg'],
-      idx: 0
+      img: '/images/studio/rooms/d.jpg'
     },
     lounge: {
       title: 'Lounge',
       sub: '',
-      imgs: ['/images/studio/rooms/lounge.jpg'],
-      idx: 0
-    },
+      img: '/images/studio/rooms/lounge.jpg'
+    }
   };
 
   // Tabs
@@ -52,6 +46,7 @@
         b.classList.remove('is-active');
         b.setAttribute('aria-selected', 'false');
       });
+
       btn.classList.add('is-active');
       btn.setAttribute('aria-selected', 'true');
 
@@ -68,105 +63,29 @@
   const previewImg = document.getElementById('lw-preview-img');
   const titleEl = document.getElementById('lw-preview-title');
   const subEl = document.getElementById('lw-preview-sub');
-  const previewToggle = document.getElementById('lw-preview-toggle');
-
-  let currentRoom = null;
 
   function showRoom(key) {
     const meta = roomMeta[key];
     if (!meta || !previewFrame || !previewImg) return;
 
-    currentRoom = key;
-    const src = meta.imgs[meta.idx] || meta.imgs[0];
-
-    previewImg.src = src;
+    previewImg.src = meta.img;
     previewImg.alt = meta.sub ? `${meta.title} (${meta.sub})` : meta.title;
 
     if (titleEl) titleEl.textContent = meta.title;
     if (subEl) subEl.textContent = meta.sub || '';
 
-    if (previewToggle) {
-      previewToggle.style.display = (meta.imgs.length > 1) ? 'inline-block' : 'none';
-    }
-
     previewFrame.classList.add('is-showing');
   }
 
-  // Hotspots: hover controls preview, click opens modal
   document.querySelectorAll('.lw-hotspot').forEach(h => {
     const key = h.dataset.room;
 
     h.addEventListener('mouseenter', () => showRoom(key));
     h.addEventListener('focus', () => showRoom(key));
 
+    // optional: prevent click from doing anything
     h.addEventListener('click', (e) => {
       e.preventDefault();
-      const meta = roomMeta[key];
-      if (!meta) return;
-      openModal(meta.imgs[meta.idx] || meta.imgs[0], meta.title, key);
     });
   });
-
-  // Toggle (preview) for rooms with 2+ images
-  if (previewToggle) {
-    previewToggle.addEventListener('click', () => {
-      if (!currentRoom) return;
-      const meta = roomMeta[currentRoom];
-      if (!meta || meta.imgs.length < 2) return;
-      meta.idx = (meta.idx + 1) % meta.imgs.length;
-      showRoom(currentRoom);
-    });
-  }
-
-  // Modal
-  const modal = document.getElementById('lw-modal');
-  const modalImg = document.getElementById('lw-modal-img');
-  const modalToggle = document.getElementById('lw-modal-toggle');
-
-  let currentModalRoom = null;
-
-  function openModal(src, alt, roomKey) {
-    if (!modal || !modalImg) return;
-
-    currentModalRoom = roomKey;
-    modalImg.src = src;
-    modalImg.alt = alt || '';
-
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-
-    if (modalToggle) {
-      const meta = roomMeta[roomKey];
-      modalToggle.style.display = (meta && meta.imgs.length > 1) ? 'inline-block' : 'none';
-    }
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    currentModalRoom = null;
-  }
-
-  if (modal) {
-    modal.addEventListener('click', (e) => {
-      const close = e.target && e.target.getAttribute && e.target.getAttribute('data-close');
-      if (close) closeModal();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeModal();
-    });
-  }
-
-  // Toggle (modal) for current room if it has multiple images
-  if (modalToggle) {
-    modalToggle.addEventListener('click', () => {
-      if (!currentModalRoom) return;
-      const meta = roomMeta[currentModalRoom];
-      if (!meta || meta.imgs.length < 2) return;
-      meta.idx = (meta.idx + 1) % meta.imgs.length;
-      if (modalImg) modalImg.src = meta.imgs[meta.idx];
-    });
-  }
 })();

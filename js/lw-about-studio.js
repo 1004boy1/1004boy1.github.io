@@ -1,7 +1,6 @@
 (() => {
   const roomMeta = {
-    a: { title: 'A Room (Control)', sub: 'Control', imgs: ['/images/studio/rooms/a.jpg', idx: 0 },
-    a2: { title: 'A Room (Live)', sub: 'Live', imgs: ['/images/studio/rooms/a2.jpg'], idx: 0 },
+    a: { title: 'A Room', sub: 'Control + Live', imgs: ['/images/studio/rooms/a.jpg', '/images/studio/rooms/a2.jpg'], idx: 0 },
     b: { title: 'B Room', sub: 'Editing', imgs: ['/images/studio/rooms/b.jpg'], idx: 0 },
     c: { title: 'C Room', sub: '', imgs: ['/images/studio/rooms/c.jpg'], idx: 0 },
     d: { title: 'D Room', sub: '', imgs: ['/images/studio/rooms/d.jpg'], idx: 0 },

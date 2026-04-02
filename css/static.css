@@ -275,13 +275,14 @@
 
 
 /* About page: make the whole top header area black for readability */
-body.lw-about-page header,
+/* body.lw-about-page header, */
 body.lw-about-page .header,
 body.lw-about-page #header,
 body.lw-about-page .Header,
 body.lw-about-page .sqs-header {
   background: #000 !important;
 }
+
 
 /* If the header is transparent and overlays content, this ensures contrast */
 body.lw-about-page .header,

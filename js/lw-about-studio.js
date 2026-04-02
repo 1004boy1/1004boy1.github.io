@@ -3,32 +3,38 @@
     a: {
       title: 'A Room',
       sub: 'Control',
-      img: '/images/studio/rooms/a.jpg'
+      thumb: '/images/studio/rooms/a-comp.jpg',
+      full: '/images/studio/rooms/a.jpg'
     },
     a2: {
       title: 'A Room',
       sub: 'Live',
-      img: '/images/studio/rooms/a2.jpg'
+      thumb: '/images/studio/rooms/a2-comp.jpg',
+      full: '/images/studio/rooms/a2.jpg'
     },
     b: {
       title: 'B Room',
       sub: 'Editing',
-      img: '/images/studio/rooms/b.jpg'
+      thumb: '/images/studio/rooms/b-comp.jpg',
+      full: '/images/studio/rooms/b.jpg'
     },
     c: {
       title: 'C Room',
       sub: '',
-      img: '/images/studio/rooms/c.jpg'
+      thumb: '/images/studio/rooms/c-comp.jpg',
+      full: '/images/studio/rooms/c.jpg'
     },
     d: {
       title: 'D Room',
       sub: '',
-      img: '/images/studio/rooms/d.jpg'
+      thumb: '/images/studio/rooms/d-comp.jpg',
+      full: '/images/studio/rooms/d.jpg'
     },
     lounge: {
       title: 'Lounge',
       sub: '',
-      img: '/images/studio/rooms/lounge.jpg'
+      thumb: '/images/studio/rooms/lounge-comp.jpg',
+      full: '/images/studio/rooms/lounge.jpg'
     }
   };
 
@@ -64,17 +70,34 @@
   const titleEl = document.getElementById('lw-preview-title');
   const subEl = document.getElementById('lw-preview-sub');
 
+  let currentRoom = null;
+  let loadToken = 0;
+
   function showRoom(key) {
     const meta = roomMeta[key];
     if (!meta || !previewFrame || !previewImg) return;
 
-    previewImg.src = meta.img;
+    currentRoom = key;
+    loadToken += 1;
+    const thisLoad = loadToken;
+
+    // show compressed image first
+    previewImg.src = meta.thumb;
     previewImg.alt = meta.sub ? `${meta.title} (${meta.sub})` : meta.title;
 
     if (titleEl) titleEl.textContent = meta.title;
     if (subEl) subEl.textContent = meta.sub || '';
 
     previewFrame.classList.add('is-showing');
+
+    // preload full image, then swap only if this is still the latest hover
+    const fullImg = new Image();
+    fullImg.onload = () => {
+      if (thisLoad !== loadToken) return;
+      if (currentRoom !== key) return;
+      previewImg.src = meta.full;
+    };
+    fullImg.src = meta.full;
   }
 
   document.querySelectorAll('.lw-hotspot').forEach(h => {
@@ -83,7 +106,6 @@
     h.addEventListener('mouseenter', () => showRoom(key));
     h.addEventListener('focus', () => showRoom(key));
 
-    // optional: prevent click from doing anything
     h.addEventListener('click', (e) => {
       e.preventDefault();
     });

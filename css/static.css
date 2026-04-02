@@ -38,18 +38,17 @@
   font-weight: 600;
   color: #000;
   text-shadow:
-    0 0 4px rgba(255,255,255,0.95),
-    0 0 8px rgba(255,255,255,0.9),
-    0 0 14px rgba(255,255,255,0.75);
+    0 0 2px rgba(255,255,255,1),
+    0 0 6px rgba(255,255,255,0.9);
 }
+
 .team-role {
   margin-top: 6px;
   opacity: 0.9;
   color: #000;
   text-shadow:
-    0 0 4px rgba(255,255,255,0.95),
-    0 0 8px rgba(255,255,255,0.9),
-    0 0 14px rgba(255,255,255,0.75);
+    0 0 2px rgba(255,255,255,1),
+    0 0 6px rgba(255,255,255,0.9);
 }
 
 

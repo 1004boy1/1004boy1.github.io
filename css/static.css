@@ -543,3 +543,33 @@ body.lw-about-page .lw-about-hero::after{
   margin-bottom: 6px;
   opacity: 0.9;
 }
+#block-ourworks {
+  margin-top: 16px;
+}
+.fe-block-ourworks {
+  grid-area: 4/2/6/6;
+  z-index: 5;
+}
+
+.fe-block-ourworks .sqs-block {
+  justify-content: center;
+}
+
+.fe-block-ourworks .sqs-block-alignment-wrapper {
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .fe-block-ourworks {
+    grid-area: 7/2/9/7;
+    z-index: 5;
+  }
+
+  .fe-block-ourworks .sqs-block {
+    justify-content: flex-start;
+  }
+
+  .fe-block-ourworks .sqs-block-alignment-wrapper {
+    align-items: flex-start;
+  }
+}

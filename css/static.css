@@ -543,3 +543,12 @@ body.lw-about-page .lw-about-hero::after{
   margin-bottom: 6px;
   opacity: 0.9;
 }
+
+#block-ourworks .sqs-block-button-element {
+  padding: 1.4em 2.6em;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+#block-ourworks {
+  margin-top: 16px;
+}

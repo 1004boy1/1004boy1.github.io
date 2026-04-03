@@ -514,3 +514,32 @@ body.lw-about-page .lw-about-hero::after{
   height: 2px;
   background: #000;
 }
+
+
+/* Gear category styling */
+.lw-gear-category {
+  margin-bottom: 28px;
+}
+
+.lw-gear-category h3 {
+  font-size: 1.4rem;     /* bigger */
+  font-weight: 700;      /* bold */
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  
+    /* added styling */
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 6px;
+}
+
+.lw-gear-category ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.lw-gear-category li {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  opacity: 0.9;
+}

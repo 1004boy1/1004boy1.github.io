@@ -1,7 +1,10 @@
 .sqs-block[data-definition-name="website.components.button"] {
   /* Button Block Base Style
 =================================================*/
-
+}
+.sqs-block[data-definition-name="website.components.button"] .sqs-block-content {
+  flex: var(--sqs-block-content-flex, 0);
+}
 .sqs-block[data-definition-name="website.components.button"] .sqs-stretched {
   flex: 1;
   height: 100%;

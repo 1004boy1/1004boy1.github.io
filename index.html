@@ -1415,10 +1415,11 @@
     .fe-block-2df19bd50f0d8c20922f {
       grid-area: 5/2/7/7;
       z-index: 5;
-
-      
-
-      
+       display: flex; /* 추가 */
+       flex-direction: column; /* 추가 */
+       gap: min(2.604vw, 20px;) /* 추가 */
+       /* 버튼 간격 조정하고 싶으면 이 값을 늘리거나 줄이면 됨 */
+       /* 단, 만약 px값을 변경할 경우 앞에 vw값 계산도 같이 해야 함 --> (20 (변경할 값) * 100) / 768 */
     }
 
     .fe-block-2df19bd50f0d8c20922f .sqs-block {

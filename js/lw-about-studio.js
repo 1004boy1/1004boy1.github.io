@@ -111,3 +111,20 @@
     });
   });
 })();
+
+<script>
+  function copyLockwoodAddress() {
+    const address = "서울특별시 송파구 백제고분로 118 지하 1층";
+
+    navigator.clipboard.writeText(address).then(() => {
+      const button = document.querySelector(".copy-address-btn span");
+      const originalText = button.textContent;
+
+      button.textContent = "Copied";
+
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 1500);
+    });
+  }
+</script>

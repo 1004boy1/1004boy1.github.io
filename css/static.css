@@ -554,18 +554,27 @@ body.lw-about-page .lw-about-hero::after{
   width: 100%;
 }
 
-.copy-address-button {
+.copy-address-row {
+  width: 100%;
   margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.copy-address-button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 16px;
+
+  padding: 10px 18px;
   border: 0;
   border-radius: 999px;
   background: #e5e5e5;
   color: #111;
+
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
 }

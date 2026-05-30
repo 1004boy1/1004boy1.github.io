@@ -549,3 +549,39 @@ body.lw-about-page .lw-about-hero::after{
   opacity: 0.9;
 }
 
+/* address copy button */
+.location-image-wrap {
+  width: 100%;
+}
+
+.copy-address-button {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: #e5e5e5;
+  color: #111;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.copy-address-button:hover {
+  background: #d6d6d6;
+}
+
+.copy-address-button:active {
+  transform: translateY(1px);
+}
+
+.copy-address-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}

@@ -2234,16 +2234,16 @@
                   style="display:block; width:100%; height:auto; object-fit:contain;"
                 >
 
-                <div class="copy-address-row">
-                  <button class="copy-address-button" type="button" onclick="copyLockwoodAddress(this)">
-                    <svg class="copy-address-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <div class="lockwood-copy-address-container">
+                  <button class="lockwood-copy-address-button" type="button" data-address="서울특별시 송파구 백제고분로 118 지하 1층">
+                    <svg class="lockwood-copy-address-icon" viewBox="0 0 24 24" aria-hidden="true">
                       <rect x="9" y="9" width="10" height="10" rx="2" ry="2"></rect>
                       <rect x="5" y="5" width="10" height="10" rx="2" ry="2"></rect>
                     </svg>
                     <span>Copy Address</span>
                   </button>
                 </div>
-              </div>
+                              </div>
 
             
                           
@@ -3729,19 +3729,22 @@
 
 
 <script>
-  function copyLockwoodAddress(button) {
-    const address = "서울특별시 송파구 백제고분로 118 지하 1층";
+  document.addEventListener("click", function (event) {
+    const button = event.target.closest(".lockwood-copy-address-button");
+    if (!button) return;
+
+    const address = button.dataset.address;
     const label = button.querySelector("span");
+    const originalText = label.textContent;
 
     navigator.clipboard.writeText(address).then(function () {
-      const originalText = label.textContent;
       label.textContent = "Copied";
 
       setTimeout(function () {
         label.textContent = originalText;
       }, 1500);
     });
-  }
+  });
 </script>
 
   </body>

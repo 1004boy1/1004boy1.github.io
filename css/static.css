@@ -630,7 +630,7 @@ body.lw-portfolio-page .portfolio-card{
 }
 
 body.lw-portfolio-page .film-card{
-  aspect-ratio: 2 / 3;
+  aspect-ratio: 4 / 5;
 }
 
 body.lw-portfolio-page .music-card{
@@ -683,6 +683,22 @@ body.lw-portfolio-page .portfolio-card-overlay p{
   margin: 0;
   font-size: 14px;
   line-height: 1.35;
+}
+
+body.lw-portfolio-page .film-card .portfolio-card-overlay,
+body.lw-portfolio-page .music-card .portfolio-card-overlay{
+  background: rgba(120,120,120,0.35);
+  color: #000;
+}
+
+body.lw-portfolio-page .film-card .portfolio-card-overlay h3,
+body.lw-portfolio-page .film-card .portfolio-card-overlay p,
+body.lw-portfolio-page .music-card .portfolio-card-overlay h3,
+body.lw-portfolio-page .music-card .portfolio-card-overlay p{
+  color: #000;
+  text-shadow:
+    0 0 2px rgba(255,255,255,1),
+    0 0 6px rgba(255,255,255,0.9);
 }
 
 body.lw-portfolio-page .portfolio-card-empty{

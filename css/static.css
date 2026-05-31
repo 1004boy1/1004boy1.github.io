@@ -24,6 +24,7 @@
 .team-card img {
   width: 100%;
   display: block;
+  transition: transform .28s ease, filter .28s ease
 }
 
 .team-overlay {
@@ -35,6 +36,11 @@
   place-items: center;
   text-align: center;
   transition: opacity 0.25s ease;
+}
+
+.team-card:hover img {
+  transform: scale(1.05);
+  filter: grayscale(.2) brightness(.75) blur(3px);
 }
 
 .team-card:hover .team-overlay { opacity: 1; }

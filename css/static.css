@@ -550,4 +550,43 @@ body.lw-about-page .lw-about-hero::after{
 }
 
 
+/* Center alignment and margin below your image */
+.copy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
 
+/* The standard grey rounded button design */
+.copy-address-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Gap between icon and text */
+  background-color: #f3f4f6; /* Modern light grey */
+  color: #374151; /* Charcoal text color */
+  border: 1px solid #d1d5db; /* Clean border outline */
+  border-radius: 8px; /* Clean rounded edges */
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover and active click states */
+.copy-address-btn:hover {
+  background-color: #e5e7eb; /* Slightly deeper grey */
+  color: #1f2937;
+}
+
+.copy-address-btn:active {
+  transform: scale(0.97); /* Micro-interaction click effect */
+}
+
+/* Two overlapping squares icon sizing */
+.copy-icon {
+  width: 15px;
+  height: 15px;
+}
